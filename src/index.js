@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css'; // import Tailwind CSS
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./index.css"; // Tailwind CSS
 
-function App() {
-  return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">Hello Tailwind!</h1>
-    </div>
-  );
-}
+// Pages
+// import UserPage from "./pages/UserPage";
+import Dashboard from "./pages/Dashboard";
 
-// Create root and render App
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <BrowserRouter>
+    <Routes>
+      {/* Redirect / to /dashboard */}
+      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      {/* <Route path="/user" element={<UserPage />} /> */}
+    </Routes>
+  </BrowserRouter>
+);
